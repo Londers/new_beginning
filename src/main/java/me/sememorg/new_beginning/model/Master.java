@@ -13,6 +13,8 @@ public class Master {
     private Integer id;
 
     private String name;
+    private String country;
+    private Integer age = 0;
     private BigDecimal cash = BigDecimal.valueOf(0);
     private Integer slavesCount = 0;
 
@@ -22,8 +24,10 @@ public class Master {
     public Master() {
     }
 
-    public Master(String name) {
+    public Master(String name, String country, Integer age) {
         this.name = name;
+        this.country = country;
+        this.age = age;
     }
 
     public String getName() {
@@ -52,5 +56,21 @@ public class Master {
 
     public Integer getId() {
         return id;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }

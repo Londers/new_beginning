@@ -7,23 +7,20 @@ import java.util.List;
 
 public class CreateMasterRequest {
     private String name;
-    private BigDecimal cash;
-    private Integer slavesCount;
+    private String country;
+    private Integer age = 0;
     private List<Slave> mySlaves;
 
     public String getName() {
         return name;
     }
 
-    public BigDecimal getCash() {
-        return cash;
+    public String getCountry() {
+        return country;
     }
 
-    public Integer getSlavesCount() {
-        return slavesCount;
+    public Integer getAge() {
+        return age;
     }
 
-    public List<Slave> getMySlaves() {
-        return mySlaves;
-    }
 }
