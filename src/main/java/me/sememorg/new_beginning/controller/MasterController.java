@@ -23,6 +23,11 @@ public class MasterController {
     @Autowired
     MasterService masterService;
 
+    @GetMapping(value = "/")
+    public ModelAndView getHello(){
+        return new ModelAndView("welcomePage");
+    }
+
     @GetMapping(value = "/{name}")
     public Optional<Master> getMaster(@PathVariable() String name){
         return masterService.readMaster(name);
@@ -36,24 +41,7 @@ public class MasterController {
                 request.getAge()));
         return new ResponseEntity<>(master, HttpStatus.OK);
     }
-//-------------------------------------------------------------------------------------------------------------------------------
 
-    @GetMapping(value="/add/master")
-    public ModelAndView showForm() {
-        return new ModelAndView("masterView", "master", new Master());
-    }
-
-    @PostMapping(value="/add/addMaster")
-    public String submit(@Valid @ModelAttribute("master") Master master, BindingResult result, ModelMap model){
-        if (result.hasErrors()) {
-            return "error";
-        }
-        model.addAttribute("name", master.getName());
-        model.addAttribute("country", master.getCountry());
-        model.addAttribute("age", master.getAge());
-        return "masterView";
-    }
-//-------------------------------------------------------------------------------------------------------------------------------
     @PutMapping(value = "/{name}")
     public Master updateMaster(@RequestBody Master master, @PathVariable("name") String name) {
         Master newMaster = new Master(
